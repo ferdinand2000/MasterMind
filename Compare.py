@@ -1,0 +1,1 @@
+# comparing of the geusses and code
