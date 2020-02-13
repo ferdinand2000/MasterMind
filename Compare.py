@@ -1,1 +1,3 @@
-# comparing of the geusses and code
+def compare(a, RandomCode):
+
+    return
