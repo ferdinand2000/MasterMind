@@ -1,19 +1,28 @@
-# Main game loop and visuals
-from Compare import compare
-import random
+# Main game waar de speler zoekt naar de code
+import itertools
+from random import choice
+from Feedback import BlackPointsPlayer
 def code():
     global RandomCode
-    RandomCode = random.randrange(1000, 9999)
+    RandomCode = [choice("abcdef") for i in range(4)]
     print(RandomCode)
     return RandomCode
 code()
-
-def guess(RandomCode):
+global teller
+teller = 0
+def guess(RandomCode, teller):
     global a
-    a = int(input("raad de 4 cijferige code "))
-    if a == RandomCode:
-        print("Did andwoordt klopt helemaal")
+    while teller <= 9:
+        a = list(input("raad de 4 letterige code "))
+        BlackPointsPlayer(a, RandomCode)
+        if a == RandomCode:
+            print("Did andwoord klopt helemaal")
+            break
+        else:
+            # set(a) & set(b)
+            teller += 1
+            Pogingen = str(10 - teller)
+            print("u heeft nog " + Pogingen + "pogingen")
     return
-guess(RandomCode)
+guess(RandomCode, teller)
 
-compare(a, RandomCode)
